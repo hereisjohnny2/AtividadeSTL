@@ -86,7 +86,7 @@ void CTesteFuncoesGenericas::EntradaUsuario(vector<int> &vetor)
   int data;
   do
   {
-    cout << "\nEntre com o dado (" << setw(3) << vetor.size()
+    cout << "Entre com o dado (" << setw(3) << vetor.size()
          << ")(ctrl+d encerra entrada):";
     cin >> data;
     cin.get();
@@ -94,6 +94,7 @@ void CTesteFuncoesGenericas::EntradaUsuario(vector<int> &vetor)
       vetor.push_back(data);
   } while (cin.good());
   cin.clear(); // Reseta objeto cin para estado ok
+  cout << endl;
 }
 
 // Preenchendo o vetor com uma sequência de valores padrões
