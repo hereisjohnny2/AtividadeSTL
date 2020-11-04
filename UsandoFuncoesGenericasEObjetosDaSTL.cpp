@@ -82,6 +82,7 @@ private:                // Métodos privados
   void Uso_de_copy_n();
   void Uso_de_iter_swap();
   void Uso_de_remove();
+  void Uso_de_unique_copy();
 }; // fim da classe
 
 // Solicita valores do vetor
@@ -123,7 +124,7 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", "remove", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
@@ -257,6 +258,8 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_iter_swap();
   else if (funcoes[selecao] == "remove")
     Uso_de_remove();
+  else if (funcoes[selecao] == "unique_copy")
+    Uso_de_unique_copy();
 
   // Mostra o vetor
   else if (funcoes[selecao] == "Mostra vetor")
@@ -727,6 +730,15 @@ void CTesteFuncoesGenericas::Uso_de_remove()
   EntradaUsuario(v);
   remove(v.begin(), v.end(), 5);
   cout << "Vetor v sem os valores iguais a 5:" << v << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_unique_copy()
+{
+  EntradaUsuario(v);
+  v2.resize(v.size());
+  auto it = unique_copy(v.begin(), v.end(), v2.begin());
+  v2.resize(distance(v2.begin(), it));
+  cout << "Vetor v sem repetições:" << v2 << endl;
 }
 
 int main()
