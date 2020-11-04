@@ -83,6 +83,7 @@ private:                // Métodos privados
   void Uso_de_iter_swap();
   void Uso_de_remove();
   void Uso_de_unique_copy();
+  void Uso_de_partition();
 }; // fim da classe
 
 // Solicita valores do vetor
@@ -124,7 +125,7 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
@@ -260,6 +261,8 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_remove();
   else if (funcoes[selecao] == "unique_copy")
     Uso_de_unique_copy();
+  else if (funcoes[selecao] == "partition")
+    Uso_de_partition();
 
   // Mostra o vetor
   else if (funcoes[selecao] == "Mostra vetor")
@@ -739,6 +742,17 @@ void CTesteFuncoesGenericas::Uso_de_unique_copy()
   auto it = unique_copy(v.begin(), v.end(), v2.begin());
   v2.resize(distance(v2.begin(), it));
   cout << "Vetor v sem repetições:" << v2 << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_partition()
+{
+  EntradaUsuario(v);
+  v2.clear();
+  v2.resize(v.size());
+  int multiplo = 5;
+  auto it = partition(v.begin(), v.end(), [=](int i) { return (i % multiplo); });
+  copy(it, v.end(), v2.begin());
+  std::cout << "Valores de v multiplos de " << multiplo << ":" << v2 << std::endl;
 }
 
 int main()
