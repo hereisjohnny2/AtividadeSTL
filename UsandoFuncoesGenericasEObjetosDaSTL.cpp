@@ -123,12 +123,14 @@ bool CTesteFuncoesGenericas::Run()
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
        << "============================================================\n";
-  for (int i = 0; i < funcoes.size(); i++)
+  for (int i = 0; i < funcoes.size() / 2; i++)
   {
     //  funcoes.push_back(vs[i]);
     if (funcoes[i] != "")
-      cout << "Uso de " << funcoes[i] << setw(50 - funcoes[i].size()) << setfill('.')
-           << i << endl;
+      cout << "Uso de " << funcoes[i] << setw(30 - funcoes[i].size()) << setfill('.')
+           << i
+           << "\tUso de " << funcoes[i + funcoes.size() / 2] << setw(30 - funcoes[i + funcoes.size() / 2].size()) << setfill('.')
+           << i + funcoes.size() / 2 << endl;
   }
   int selecao;
   cin >> selecao;
@@ -650,7 +652,10 @@ void CTesteFuncoesGenericas::Uso_de_bind2nd()
 void CTesteFuncoesGenericas::Uso_de_men_fun_ref(const vector<string> &s)
 {
   {
-    cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+    // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+    vector<string> s = {"casa", "bola", "carro", "jogo"};
+    transform(s.begin(), s.end(), v.begin(), mem_fun_ref(&string::size));
+    cout << "Tamanho das palavras em s: " << v << endl;
   }
   /*
   vector<int>::const_iterator it = find_if(s.begin(),s.end(),men_fun_ref(&string::empty));
