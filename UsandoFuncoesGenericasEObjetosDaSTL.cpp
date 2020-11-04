@@ -80,6 +80,7 @@ private:                // Métodos privados
   void Uso_de_find();
   void Uso_de_count();
   void Uso_de_copy_n();
+  void Uso_de_iter_swap();
 }; // fim da classe
 
 // Solicita valores do vetor
@@ -121,19 +122,23 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
        << "============================================================\n";
-  for (int i = 0; i < funcoes.size() / 2; i++)
+  for (int i = 0; i < funcoes.size() / 4; i++)
   {
     //  funcoes.push_back(vs[i]);
     if (funcoes[i] != "")
-      cout << "Uso de " << funcoes[i] << setw(30 - funcoes[i].size()) << setfill('.')
+      cout << "Uso de " << funcoes[i] << setw(27 - funcoes[i].size()) << setfill('.')
            << i
-           << "\tUso de " << funcoes[i + funcoes.size() / 2] << setw(30 - funcoes[i + funcoes.size() / 2].size()) << setfill('.')
-           << i + funcoes.size() / 2 << endl;
+           << "\tUso de " << funcoes[i + 1 * funcoes.size() / 4] << setw(27 - funcoes[i + 1 * funcoes.size() / 4].size()) << setfill('.')
+           << i + 1 * funcoes.size() / 4
+           << "\tUso de " << funcoes[i + 2 * funcoes.size() / 4] << setw(27 - funcoes[i + 2 * funcoes.size() / 4].size()) << setfill('.')
+           << i + 2 * funcoes.size() / 4
+           << "\tUso de " << funcoes[i + 3 * funcoes.size() / 4] << setw(27 - funcoes[i + 3 * funcoes.size() / 4].size()) << setfill('.')
+           << i + 3 * funcoes.size() / 4 << endl;
   }
   int selecao;
   cin >> selecao;
@@ -247,6 +252,8 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_count();
   else if (funcoes[selecao] == "copy_n")
     Uso_de_copy_n();
+  else if (funcoes[selecao] == "iter_swap")
+    Uso_de_iter_swap();
 
   // Mostra o vetor
   else if (funcoes[selecao] == "Mostra vetor")
@@ -700,6 +707,16 @@ void CTesteFuncoesGenericas::Uso_de_copy_n()
   v2.resize(n);
   copy_n(v.begin(), n, v2.end());
   cout << "Os primeiros " << n << " elementos do vetor v:" << v2 << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_iter_swap()
+{
+  InicializaVetor(v, 10);
+  InicializaVetor(v2, 5);
+  iter_swap(v.begin(), v2.begin() + 3);
+
+  cout << "Vetor v:" << v << endl;
+  cout << "Vetor v2:" << v2 << endl;
 }
 
 int main()
