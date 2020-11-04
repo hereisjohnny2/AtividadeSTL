@@ -77,6 +77,19 @@ private:                // Métodos privados
   void Uso_de_logical_not();
   void Uso_de_bind2nd(); // Adaptadores (not1 find_if)
   void Uso_de_men_fun_ref(const vector<string> &s);
+  void Uso_de_find();
+  void Uso_de_count();
+  void Uso_de_copy_n();
+  void Uso_de_iter_swap();
+  void Uso_de_remove();
+  void Uso_de_unique_copy();
+  void Uso_de_partition();
+  void Uso_de_sort();
+  void Uso_de_is_sorted();
+  void Uso_de_equal_range();
+  void Uso_de_pop_heap();
+  void Uso_de_min();
+  void Uso_de_max_element();
 }; // fim da classe
 
 // Solicita valores do vetor
@@ -94,6 +107,7 @@ void CTesteFuncoesGenericas::EntradaUsuario(vector<int> &vetor)
       vetor.push_back(data);
   } while (cin.good());
   cin.clear(); // Reseta objeto cin para estado ok
+  cout << endl;
 }
 
 // Preenchendo o vetor com uma sequência de valores padrões
@@ -117,17 +131,23 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", "sort", "is_sorted", "equal_range", "pop_heap", "min", "max_element", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
        << "============================================================\n";
-  for (int i = 0; i < 30; i++)
+  for (int i = 0; i < funcoes.size() / 4; i++)
   {
     //  funcoes.push_back(vs[i]);
     if (funcoes[i] != "")
-      cout << "Uso de " << funcoes[i] << setw(50 - funcoes[i].size()) << setfill('.')
-           << i << endl;
+      cout << "Uso de " << funcoes[i] << setw(27 - funcoes[i].size()) << setfill('.')
+           << i
+           << "\tUso de " << funcoes[i + 1 * funcoes.size() / 4] << setw(27 - funcoes[i + 1 * funcoes.size() / 4].size()) << setfill('.')
+           << i + 1 * funcoes.size() / 4
+           << "\tUso de " << funcoes[i + 2 * funcoes.size() / 4] << setw(27 - funcoes[i + 2 * funcoes.size() / 4].size()) << setfill('.')
+           << i + 2 * funcoes.size() / 4
+           << "\tUso de " << funcoes[i + 3 * funcoes.size() / 4] << setw(27 - funcoes[i + 3 * funcoes.size() / 4].size()) << setfill('.')
+           << i + 3 * funcoes.size() / 4 << endl;
   }
   int selecao;
   cin >> selecao;
@@ -135,7 +155,7 @@ bool CTesteFuncoesGenericas::Run()
   if (selecao >= funcoes.size())
     return 0;
   InicializaVetor(v);
-  cout << setfill(' ') << "Vetor  v= " << v << endl;
+  cout << setfill(' ') << "Vetor v = " << v << endl;
 
   if (funcoes[selecao] == "fill_n")
     Uso_de_fill_n();
@@ -235,6 +255,32 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_bind2nd(); // usa not1
   else if (funcoes[selecao] == "men_fun_ref")
     Uso_de_men_fun_ref(funcoes);
+  else if (funcoes[selecao] == "find")
+    Uso_de_find();
+  else if (funcoes[selecao] == "count")
+    Uso_de_count();
+  else if (funcoes[selecao] == "copy_n")
+    Uso_de_copy_n();
+  else if (funcoes[selecao] == "iter_swap")
+    Uso_de_iter_swap();
+  else if (funcoes[selecao] == "remove")
+    Uso_de_remove();
+  else if (funcoes[selecao] == "unique_copy")
+    Uso_de_unique_copy();
+  else if (funcoes[selecao] == "partition")
+    Uso_de_partition();
+  else if (funcoes[selecao] == "sort")
+    Uso_de_sort();
+  else if (funcoes[selecao] == "is_sorted")
+    Uso_de_is_sorted();
+  else if (funcoes[selecao] == "equal_range")
+    Uso_de_equal_range();
+  else if (funcoes[selecao] == "pop_heap")
+    Uso_de_pop_heap();
+  else if (funcoes[selecao] == "min")
+    Uso_de_min();
+  else if (funcoes[selecao] == "max_element")
+    Uso_de_max_element();
 
   // Mostra o vetor
   else if (funcoes[selecao] == "Mostra vetor")
@@ -257,7 +303,12 @@ void CTesteFuncoesGenericas::Uso_de_fill_n()
 // Comparação
 void CTesteFuncoesGenericas::Uso_de_equal()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  cout << setfill(' ') << "Vetor v2 = " << v2 << endl;
+  if (equal(v.begin(), v.end(), v2.begin()))
+    cout << "O conteúdo dos vetores é igual\n";
+  else
+    cout << "O conteúdo dos vetores são diferentes\n";
 }
 void CTesteFuncoesGenericas::Uso_de_mismatch()
 {
@@ -296,7 +347,21 @@ void CTesteFuncoesGenericas::Uso_de_replace_copy_if()
 // Misturar/mesclar/inverter
 void CTesteFuncoesGenericas::Uso_de_inplace_merge()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl
+  EntradaUsuario(v);
+  sort(v.begin(), v.end());
+
+  EntradaUsuario(v2);
+  sort(v2.begin(), v2.end());
+
+  v3.resize(v.size() + v2.size());
+
+  auto it = copy(v.begin(), v.end(), v3.begin());
+  copy(v2.begin(), v2.end(), it);
+
+  inplace_merge(v3.begin(), it, v3.end());
+
+  cout << "Vetor v3=" << v3 << endl;
 }
 
 void CTesteFuncoesGenericas::Uso_de_reverse_copy()
@@ -391,7 +456,11 @@ void CTesteFuncoesGenericas::Uso_de_generate()
 
 void CTesteFuncoesGenericas::Uso_de_for_each()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+
+  v2.clear();
+  for_each(v.begin(), v.end(), [=](int i) { v2.push_back(i * 2); });
+  cout << "Vetor v2 = 2*v" << v2 << endl;
 }
 
 void CTesteFuncoesGenericas::Uso_de_transform()
@@ -475,7 +544,11 @@ void CTesteFuncoesGenericas::Uso_de_set_symmetric_difference()
 // Ordenação por pilha
 void CTesteFuncoesGenericas::Uso_de_make_heap()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  EntradaUsuario(v);
+  make_heap(v.begin(), v.end());
+  cout << "Vetor v como heap: " << v << endl;
+  cout << "Maior elemento da heap (v.front): " << v.front() << endl;
 }
 
 // Funçães objeto
@@ -587,7 +660,11 @@ void CTesteFuncoesGenericas::Uso_de_greater_equal()
 
 void CTesteFuncoesGenericas::Uso_de_less_equal()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  EntradaUsuario(v);
+  const int valor = 15;
+  int resultadoComparaco = count_if(v.begin(), v.end(), bind2nd(less_equal<int>(), valor));
+  cout << "No vetor v, " << resultadoComparaco << " elementos são menores que 15" << endl;
 }
 
 // Funçães l�gicas
@@ -618,12 +695,130 @@ void CTesteFuncoesGenericas::Uso_de_bind2nd()
 void CTesteFuncoesGenericas::Uso_de_men_fun_ref(const vector<string> &s)
 {
   {
-    cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+    // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+    vector<string> s = {"casa", "bola", "carro", "jogo"};
+    transform(s.begin(), s.end(), v.begin(), mem_fun_ref(&string::size));
+    cout << "Tamanho das palavras em s: " << v << endl;
   }
   /*
   vector<int>::const_iterator it = find_if(s.begin(),s.end(),men_fun_ref(&string::empty));
   cout << "String vazia na posição:"  << it - s.begin() << endl;
   */
+}
+
+void CTesteFuncoesGenericas::Uso_de_find()
+{
+  EntradaUsuario(v);
+  cout << "Digite o valor a ser buscado: ";
+  int valorBuscado;
+  cin >> valorBuscado;
+  auto it = find(v.begin(), v.end(), valorBuscado);
+  if (it != v.end())
+    cout << "O valor foi encontrado na posição: " << it - v.begin() << endl;
+  else
+    cout << "O valor não foi encontrado no vetor." << endl;
+  cin.get();
+}
+
+void CTesteFuncoesGenericas::Uso_de_count()
+{
+  EntradaUsuario(v);
+  int valorRepetido = 5;
+  auto it = count(v.begin(), v.end(), valorRepetido);
+  cout << "O valor " << valorRepetido << " aparece no vetor " << it << " vezes" << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_copy_n()
+{
+  int n = 3;
+  v2.resize(n);
+  copy_n(v.begin(), n, v2.end());
+  cout << "Os primeiros " << n << " elementos do vetor v:" << v2 << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_iter_swap()
+{
+  InicializaVetor(v, 10);
+  InicializaVetor(v2, 5);
+  iter_swap(v.begin(), v2.begin() + 3);
+
+  cout << "Vetor v:" << v << endl;
+  cout << "Vetor v2:" << v2 << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_remove()
+{
+  EntradaUsuario(v);
+  remove(v.begin(), v.end(), 5);
+  cout << "Vetor v sem os valores iguais a 5:" << v << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_unique_copy()
+{
+  EntradaUsuario(v);
+  v2.resize(v.size());
+  auto it = unique_copy(v.begin(), v.end(), v2.begin());
+  v2.resize(distance(v2.begin(), it));
+  cout << "Vetor v sem repetições:" << v2 << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_partition()
+{
+  EntradaUsuario(v);
+  v2.clear();
+  v2.resize(v.size());
+  int multiplo = 5;
+  auto it = partition(v.begin(), v.end(), [=](int i) { return (i % multiplo); });
+  copy(it, v.end(), v2.begin());
+  std::cout << "Valores de v multiplos de " << multiplo << ":" << v2 << std::endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_sort()
+{
+  EntradaUsuario(v);
+  sort(v.begin(), v.end());
+
+  cout << "Vetor v ordenado:" << v << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_is_sorted()
+{
+  EntradaUsuario(v);
+  cout << "Vetor v está ordenado? " << is_sorted(v.begin(), v.end()) << endl;
+  sort(v.begin(), v.end());
+  cout << "Vetor v está ordenado? " << is_sorted(v.begin(), v.end()) << endl;
+
+  cout << "Vetor v ordenado:" << v << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_equal_range()
+{
+  EntradaUsuario(v);
+  sort(v.begin(), v.end());
+  int valor = 20;
+  auto limites = equal_range(v.begin(), v.end(), valor);
+  cout << "Posicao do limite inferior: " << limites.first - v.begin() << endl;
+  cout << "Posicao do limite superior: " << limites.second - v.begin() << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_pop_heap()
+{
+  EntradaUsuario(v);
+  make_heap(v.begin(), v.end());
+  cout << "Valor máximo no heap: " << v.front() << endl;
+  pop_heap(v.begin(), v.end());
+  cout << "Valor máximo no heap depois do pop: " << v.front() << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_min()
+{
+  cout << "Menor valor entre 2 e 5: " << min(2, 5) << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_max_element()
+{
+  EntradaUsuario(v);
+  cout << "Maior elemento em v: " << *max_element(v.begin(), v.end()) << endl;
 }
 
 int main()
