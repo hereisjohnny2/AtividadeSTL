@@ -123,7 +123,7 @@ bool CTesteFuncoesGenericas::Run()
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
        << "============================================================\n";
-  for (int i = 0; i < 30; i++)
+  for (int i = 0; i < funcoes.size(); i++)
   {
     //  funcoes.push_back(vs[i]);
     if (funcoes[i] != "")
@@ -615,7 +615,11 @@ void CTesteFuncoesGenericas::Uso_de_greater_equal()
 
 void CTesteFuncoesGenericas::Uso_de_less_equal()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  EntradaUsuario(v);
+  const int valor = 15;
+  int resultadoComparaco = count_if(v.begin(), v.end(), bind2nd(less_equal<int>(), valor));
+  cout << "No vetor v, " << resultadoComparaco << " elementos são menores que 15" << endl;
 }
 
 // Funçães l�gicas
