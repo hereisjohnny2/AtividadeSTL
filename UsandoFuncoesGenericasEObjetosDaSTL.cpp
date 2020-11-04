@@ -135,7 +135,7 @@ bool CTesteFuncoesGenericas::Run()
   if (selecao >= funcoes.size())
     return 0;
   InicializaVetor(v);
-  cout << setfill(' ') << "Vetor  v= " << v << endl;
+  cout << setfill(' ') << "Vetor v = " << v << endl;
 
   if (funcoes[selecao] == "fill_n")
     Uso_de_fill_n();
@@ -257,7 +257,12 @@ void CTesteFuncoesGenericas::Uso_de_fill_n()
 // Comparação
 void CTesteFuncoesGenericas::Uso_de_equal()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  cout << setfill(' ') << "Vetor v2 = " << v2 << endl;
+  if (equal(v.begin(), v.end(), v2.begin()))
+    cout << "O conteúdo dos vetores é igual\n";
+  else
+    cout << "O conteúdo dos vetores são diferentes\n";
 }
 void CTesteFuncoesGenericas::Uso_de_mismatch()
 {
