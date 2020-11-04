@@ -78,6 +78,7 @@ private:                // Métodos privados
   void Uso_de_bind2nd(); // Adaptadores (not1 find_if)
   void Uso_de_men_fun_ref(const vector<string> &s);
   void Uso_de_find();
+  void Uso_de_count();
 }; // fim da classe
 
 // Solicita valores do vetor
@@ -119,7 +120,7 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
@@ -241,6 +242,8 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_men_fun_ref(funcoes);
   else if (funcoes[selecao] == "find")
     Uso_de_find();
+  else if (funcoes[selecao] == "count")
+    Uso_de_count();
 
   // Mostra o vetor
   else if (funcoes[selecao] == "Mostra vetor")
@@ -678,6 +681,14 @@ void CTesteFuncoesGenericas::Uso_de_find()
   else
     cout << "O valor não foi encontrado no vetor." << endl;
   cin.get();
+}
+
+void CTesteFuncoesGenericas::Uso_de_count()
+{
+  EntradaUsuario(v);
+  int valorRepetido = 5;
+  auto it = count(v.begin(), v.end(), valorRepetido);
+  cout << "O valor " << valorRepetido << " aparece no vetor " << it << " vezes" << endl;
 }
 
 int main()
