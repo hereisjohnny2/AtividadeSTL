@@ -499,7 +499,11 @@ void CTesteFuncoesGenericas::Uso_de_set_symmetric_difference()
 // Ordenação por pilha
 void CTesteFuncoesGenericas::Uso_de_make_heap()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  EntradaUsuario(v);
+  make_heap(v.begin(), v.end());
+  cout << "Vetor v como heap: " << v << endl;
+  cout << "Maior elemento da heap (v.front): " << v.front() << endl;
 }
 
 // Funçães objeto
