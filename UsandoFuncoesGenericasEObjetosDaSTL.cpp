@@ -411,7 +411,11 @@ void CTesteFuncoesGenericas::Uso_de_generate()
 
 void CTesteFuncoesGenericas::Uso_de_for_each()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+
+  v2.clear();
+  for_each(v.begin(), v.end(), [=](int i) { v2.push_back(i * 2); });
+  cout << "Vetor v2 = 2*v" << v2 << endl;
 }
 
 void CTesteFuncoesGenericas::Uso_de_transform()
