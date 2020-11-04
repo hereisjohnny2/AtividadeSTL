@@ -86,7 +86,7 @@ void CTesteFuncoesGenericas::EntradaUsuario(vector<int> &vetor)
   int data;
   do
   {
-    cout << "Entre com o dado (" << setw(3) << vetor.size()
+    cout << "\nEntre com o dado (" << setw(3) << vetor.size()
          << ")(ctrl+d encerra entrada):";
     cin >> data;
     cin.get();
@@ -301,7 +301,21 @@ void CTesteFuncoesGenericas::Uso_de_replace_copy_if()
 // Misturar/mesclar/inverter
 void CTesteFuncoesGenericas::Uso_de_inplace_merge()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl
+  EntradaUsuario(v);
+  sort(v.begin(), v.end());
+
+  EntradaUsuario(v2);
+  sort(v2.begin(), v2.end());
+
+  v3.resize(v.size() + v2.size());
+
+  auto it = copy(v.begin(), v.end(), v3.begin());
+  copy(v2.begin(), v2.end(), it);
+
+  inplace_merge(v3.begin(), it, v3.end());
+
+  cout << "Vetor v3=" << v3 << endl;
 }
 
 void CTesteFuncoesGenericas::Uso_de_reverse_copy()
