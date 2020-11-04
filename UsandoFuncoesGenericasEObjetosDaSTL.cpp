@@ -77,6 +77,7 @@ private:                // Métodos privados
   void Uso_de_logical_not();
   void Uso_de_bind2nd(); // Adaptadores (not1 find_if)
   void Uso_de_men_fun_ref(const vector<string> &s);
+  void Uso_de_find();
 }; // fim da classe
 
 // Solicita valores do vetor
@@ -118,7 +119,7 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
@@ -238,6 +239,8 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_bind2nd(); // usa not1
   else if (funcoes[selecao] == "men_fun_ref")
     Uso_de_men_fun_ref(funcoes);
+  else if (funcoes[selecao] == "find")
+    Uso_de_find();
 
   // Mostra o vetor
   else if (funcoes[selecao] == "Mostra vetor")
@@ -661,6 +664,20 @@ void CTesteFuncoesGenericas::Uso_de_men_fun_ref(const vector<string> &s)
   vector<int>::const_iterator it = find_if(s.begin(),s.end(),men_fun_ref(&string::empty));
   cout << "String vazia na posição:"  << it - s.begin() << endl;
   */
+}
+
+void CTesteFuncoesGenericas::Uso_de_find()
+{
+  EntradaUsuario(v);
+  cout << "Digite o valor a ser buscado: ";
+  int valorBuscado;
+  cin >> valorBuscado;
+  auto it = find(v.begin(), v.end(), valorBuscado);
+  if (it != v.end())
+    cout << "O valor foi encontrado na posição: " << it - v.begin() << endl;
+  else
+    cout << "O valor não foi encontrado no vetor." << endl;
+  cin.get();
 }
 
 int main()
