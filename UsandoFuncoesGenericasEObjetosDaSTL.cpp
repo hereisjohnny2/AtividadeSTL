@@ -77,6 +77,7 @@ private:                // Métodos privados
   void Uso_de_logical_not();
   void Uso_de_bind2nd(); // Adaptadores (not1 find_if)
   void Uso_de_men_fun_ref(const vector<string> &s);
+
   void Uso_de_find();
   void Uso_de_count();
   void Uso_de_copy_n();
@@ -336,6 +337,10 @@ void CTesteFuncoesGenericas::Uso_de_includes()
 void CTesteFuncoesGenericas::Uso_de_remove_copy_if()
 {
   cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  vector<int> v = {1, 2, 3, 4, 5, 6};
+  vector<int> v2(6);
+  remove_copy_if(v.begin(), v.end(), v2.begin(), [=](int i) { return i % 2; });
+  cout << v2 << endl;
 }
 
 // Trocas
@@ -695,10 +700,9 @@ void CTesteFuncoesGenericas::Uso_de_bind2nd()
 void CTesteFuncoesGenericas::Uso_de_men_fun_ref(const vector<string> &s)
 {
   {
-    // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
-    vector<string> s = {"casa", "bola", "carro", "jogo"};
+    v.resize(s.size());
     transform(s.begin(), s.end(), v.begin(), mem_fun_ref(&string::size));
-    cout << "Tamanho das palavras em s: " << v << endl;
+    cout << "Tamanho dos nome das funções: " << v << endl;
   }
   /*
   vector<int>::const_iterator it = find_if(s.begin(),s.end(),men_fun_ref(&string::empty));
