@@ -1,4 +1,4 @@
-#include <iostream>   // Entrada e sa�da de dados
+#include <iostream>   // Entrada e saída de dados
 #include <iomanip>    // Manipuladores
 #include <string>     // Strings de C++
 #include <vector>     // Classe de vetores
@@ -8,6 +8,8 @@
 #include <numeric>    // Função inner_product
 #include <functional> // Função
 #include <iterator>   // Iteradores
+#include <cctype>     //
+#include <deque>      //
 
 using namespace std; // Define o uso do espaço de nomes std
 
@@ -24,7 +26,7 @@ public:
     msg = "\n-------------------------------------------\n";
   }
 
-  // M�todos p�blicos
+  // Métodos públicos
   void EntradaUsuario(vector<int> &vetor);
   void InicializaVetor(vector<int> &vetor, int n = 5);
   bool Run();
@@ -78,6 +80,21 @@ private:                // Métodos privados
   void Uso_de_bind2nd(); // Adaptadores (not1 find_if)
   void Uso_de_men_fun_ref(const vector<string> &s);
 
+  void Uso_de_none_of();
+  void Uso_de_adjacent_find();
+  void Uso_de_copy();
+  void Uso_de_swap_ranges();
+  void Uso_de_generate_n();
+  void Uso_de_unique();
+  void Uso_de_is_partitioned();
+  void Uso_de_partition_point();
+  void Uso_de_partial_sort_copy();
+  void Uso_de_upper_bound();
+  void Uso_de_push_heap();
+  void Uso_de_is_heap_until();
+  void Uso_de_min_element();
+  void Uso_de_prev_permutation();
+
   void Uso_de_find();
   void Uso_de_count();
   void Uso_de_copy_n();
@@ -92,6 +109,25 @@ private:                // Métodos privados
   void Uso_de_min();
   void Uso_de_max_element();
 }; // fim da classe
+
+bool CNumeroImpar(int i)
+{
+  return ((i % 2) == 1);
+}
+
+bool CNumeroPar(int i)
+{
+  return ((i % 2) == 0);
+}
+bool Positivo(int i)
+{
+  return i > 0;
+}
+
+bool Negativo(int i)
+{
+  return i < 0;
+}
 
 // Solicita valores do vetor
 void CTesteFuncoesGenericas::EntradaUsuario(vector<int> &vetor)
@@ -119,6 +155,8 @@ void CTesteFuncoesGenericas::InicializaVetor(vector<int> &vetor, int n)
     vetor.push_back(i);
 }
 
+// Funcoes Auxiliares para uso posterior
+
 // Declaração e definição da sobrecarga de <<
 template <typename Tipo>
 ostream &operator<<(ostream &os, const vector<Tipo> &v)
@@ -132,7 +170,7 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", "sort", "is_sorted", "equal_range", "pop_heap", "min", "max_element", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", "sort", "is_sorted", "equal_range", "pop_heap", "min", "max_element", "none_of", "adjacent_find", "copy", "swap_ranges", "generate_n", "unique", "is_partitioned", "partition_point", "partial_sort_copy", "upper_bound", "push_heap", "is_heap_until", "min_element", "prev_permutation", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
@@ -256,6 +294,36 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_bind2nd(); // usa not1
   else if (funcoes[selecao] == "men_fun_ref")
     Uso_de_men_fun_ref(funcoes);
+
+  else if (funcoes[selecao] == "none_of")
+    Uso_de_none_of();
+  else if (funcoes[selecao] == "adjacent_find")
+    Uso_de_adjacent_find();
+  else if (funcoes[selecao] == "copy")
+    Uso_de_copy();
+  else if (funcoes[selecao] == "swap_ranges")
+    Uso_de_swap_ranges();
+  else if (funcoes[selecao] == "generate_n")
+    Uso_de_generate_n();
+  else if (funcoes[selecao] == "unique")
+    Uso_de_unique();
+  else if (funcoes[selecao] == "is_partitioned")
+    Uso_de_is_partitioned();
+  else if (funcoes[selecao] == "partition_point")
+    Uso_de_partition_point();
+  else if (funcoes[selecao] == "partial_sort_copy")
+    Uso_de_partial_sort_copy();
+  else if (funcoes[selecao] == "upper_bound")
+    Uso_de_upper_bound();
+  else if (funcoes[selecao] == "push_heap")
+    Uso_de_push_heap();
+  else if (funcoes[selecao] == "is_heap_until")
+    Uso_de_is_heap_until();
+  else if (funcoes[selecao] == "min_element")
+    Uso_de_min_element();
+  else if (funcoes[selecao] == "prev_permutation")
+    Uso_de_prev_permutation();
+
   else if (funcoes[selecao] == "find")
     Uso_de_find();
   else if (funcoes[selecao] == "count")
@@ -299,12 +367,14 @@ bool CTesteFuncoesGenericas::Run()
 // Preenchimento
 void CTesteFuncoesGenericas::Uso_de_fill_n()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  fill_n(v.begin(), 3, 35);
+  cout << setw(30) << "Vetor v apos fill_n(v.begin(), 3, 35); v= " << v << endl;
+  fill_n(v.begin() + 3, 2, 36);
+  cout << setw(30) << "Vetor v apos fill_n(v.begin() + 3, 2, 36); v= " << v << endl;
 }
 // Comparação
 void CTesteFuncoesGenericas::Uso_de_equal()
 {
-  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
   cout << setfill(' ') << "Vetor v2 = " << v2 << endl;
   if (equal(v.begin(), v.end(), v2.begin()))
     cout << "O conteúdo dos vetores é igual\n";
@@ -336,7 +406,6 @@ void CTesteFuncoesGenericas::Uso_de_includes()
 // Remoção
 void CTesteFuncoesGenericas::Uso_de_remove_copy_if()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
   vector<int> v = {1, 2, 3, 4, 5, 6};
   vector<int> v2(6);
   remove_copy_if(v.begin(), v.end(), v2.begin(), [=](int i) { return i % 2; });
@@ -346,7 +415,13 @@ void CTesteFuncoesGenericas::Uso_de_remove_copy_if()
 // Trocas
 void CTesteFuncoesGenericas::Uso_de_replace_copy_if()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  cout << "Antes de replace_copy_if: v= " << v << endl;
+  replace_copy_if(v.begin(), v.end(), v2.begin(), CNumeroImpar, 100);
+  cout << "Depois de replace_copy_if (substitui valores impares por 100): \nv= " << v2 << endl;
+  //cout << msg << "Exerc�cio: Montar este exemplo. " << msg << endl;
+
+  replace_copy_if(v.begin(), v.end(), v2.begin(), CNumeroPar, 200);
+  cout << "Depois de replace_copy_if (substitui valores pares por 200): \nv= " << v2 << endl;
 }
 
 // Misturar/mesclar/inverter
@@ -399,7 +474,17 @@ void CTesteFuncoesGenericas::Uso_de_adjacent_difference()
 
 void CTesteFuncoesGenericas::Uso_de_search_n()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  vector<int>::iterator itt;
+  vector<int>::iterator itt2;
+  itt = search_n(v.begin(), v.end(), 1, 3);
+
+  cout << "A posicao do numero 3 no vetor v esta no indice " << (itt - v.begin()) << endl;
+  v.push_back(4);
+  v.push_back(4);
+  cout << "Aumentando o vetor v com mais 2 elementos 4." << endl;
+  cout << "Novo vetor v: " << v << endl;
+  itt2 = search_n(v.begin(), v.end(), 3, 4);
+  cout << "A posicao da terceira ocorrencia do numero 4 no vetor v esta no indice " << (itt2 - v.begin()) << endl;
 }
 
 // CTesteFuncoesGenericas::Uso_de_binary_search
@@ -481,7 +566,10 @@ void CTesteFuncoesGenericas::Uso_de_nth_element()
 
 void CTesteFuncoesGenericas::Uso_de_counf_if()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  int impares = count_if(v.begin(), v.end(), CNumeroImpar);
+  int pares = count_if(v.begin(), v.end(), CNumeroPar);
+  cout << "A quantidade de numeros impares em v e: " << impares << endl;
+  cout << "A quantidade de numeros pares em v e: " << pares << endl;
 }
 
 // Acumula valores no intervalo especificado
@@ -660,19 +748,21 @@ void CTesteFuncoesGenericas::Uso_de_less()
 
 void CTesteFuncoesGenericas::Uso_de_greater_equal()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  vector<int> numeros{200, -30, 10, -40, 0, 5, 27, -99};
+  int cx = count_if(numeros.begin(), numeros.end(), bind2nd(greater_equal<int>(), 0));
+  cout << "Valores iniciais: " << numeros << endl;
+  cout << "Existem " << cx << " positivos.\n";
 }
 
 void CTesteFuncoesGenericas::Uso_de_less_equal()
 {
-  // cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
   EntradaUsuario(v);
   const int valor = 15;
   int resultadoComparaco = count_if(v.begin(), v.end(), bind2nd(less_equal<int>(), valor));
   cout << "No vetor v, " << resultadoComparaco << " elementos são menores que 15" << endl;
 }
 
-// Funçães l�gicas
+// Funçães lógicas
 void CTesteFuncoesGenericas::Uso_de_logical_and()
 {
   cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
@@ -685,7 +775,29 @@ void CTesteFuncoesGenericas::Uso_de_logical_or()
 
 void CTesteFuncoesGenericas::Uso_de_logical_not()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  deque<bool> d1, d2(7);
+  deque<bool>::iterator iter1, iter2;
+
+  int i;
+  for (i = 0; i < 7; i++)
+  {
+    d1.push_back((bool)((i % 2) != 0));
+  }
+
+  cout << boolalpha; // boolalpha I/O flag permitida
+
+  cout << "Deque original:\n d1 = ( ";
+  for (iter1 = d1.begin(); iter1 != d1.end(); iter1++)
+    cout << *iter1 << " ";
+  cout << ")" << endl;
+
+  // Para inverter todos os elementos bool do deque,
+  // usamos o objeto funcao logical_not
+  transform(d1.begin(), d1.end(), d2.begin(), logical_not<bool>());
+  cout << "O deque com seus valores opostos:\n d2 = ( ";
+  for (iter2 = d2.begin(); iter2 != d2.end(); iter2++)
+    cout << *iter2 << " ";
+  cout << ")" << endl;
 }
 
 // Adaptadores
@@ -704,10 +816,251 @@ void CTesteFuncoesGenericas::Uso_de_men_fun_ref(const vector<string> &s)
     transform(s.begin(), s.end(), v.begin(), mem_fun_ref(&string::size));
     cout << "Tamanho dos nome das funções: " << v << endl;
   }
-  /*
-  vector<int>::const_iterator it = find_if(s.begin(),s.end(),men_fun_ref(&string::empty));
-  cout << "String vazia na posição:"  << it - s.begin() << endl;
-  */
+}
+
+/* Funcao none_of
+Returns true if pred returns false for all the elements in the range [first, last]
+or if the range is empty, and false otherwise. */
+
+void CTesteFuncoesGenericas::Uso_de_none_of()
+{
+  vector<int> teste1{1, 3, 5, 7};
+  vector<int> teste2{-2, -4, -6};
+
+  bool resposta = none_of(v.begin(), v.end(), CNumeroImpar);
+  cout << "Os elementos do vetor v (" << v << ") sao todos impares? " << resposta << endl;
+  resposta = none_of(teste1.begin(), teste1.end(), Negativo);
+  cout << "Os elementos do vetor teste1 (" << teste1 << ") sao todos negativos? " << resposta << endl;
+  resposta = none_of(teste2.begin(), teste2.end(), Negativo);
+  cout << "Os elementos do vetor teste2 (" << teste2 << ") sao todos negativos? " << resposta << endl;
+}
+
+/* Funcao: adjacent_find
+Find equal adjacent elements in range
+Searches the range [first,last) for the first occurrence of two consecutive elements that match,
+and returns an iterator to the first of these two elements, or last if no such pair is found.
+Two elements match if they compare equal using operator==
+*/
+void CTesteFuncoesGenericas::Uso_de_adjacent_find()
+{
+  v.push_back(5);
+  v.push_back(5);
+  v.push_back(6);
+  v.push_back(6);
+  vector<int>::iterator itt = adjacent_find(v.begin(), v.end());
+
+  cout << "Novos valores do vetor: " << v << "\n. Valor do primeiro elemento que se repete: " << *itt << endl;
+  cout << "A posicao do primeiro elemento que se repete: " << (itt - v.begin()) << endl;
+}
+
+/* Funcao: copy
+Copy range of elements
+Copies the elements in the range [first,last) into the range beginning at result.
+The function returns an iterator to the end of the destination range (which points to the element following
+the last element copied). */
+void CTesteFuncoesGenericas::Uso_de_copy()
+{
+  vector<int> copia(5, 10);
+  cout << "Valores do vetor 1: " << v << endl;
+  cout << "Valores do vetor 2: " << copia << endl;
+
+  copy(v.begin(), v.begin() + 3, copia.begin());
+  cout << "3 primeiros valores do vetor 1 copiado para o vetor 2: " << copia << endl;
+
+  copy(v.begin(), v.end(), copia.begin());
+  cout << "Copia completa do vetor 1 para o vetor 2: " << copia << endl;
+}
+
+/*Funcao: swap_ranges
+std::swap is used for swapping of elements between two containers.
+One of its variation is std::swap_ranges, which as the name suggests is used for swapping the elements within a range.
+It simply exchanges the values of each of the elements in the range [first1, last1) with those of their respective elements
+in the range beginning at first2. If we look at its internal working, we will find that this function itself uses std::swap(). */
+
+void CTesteFuncoesGenericas::Uso_de_swap_ranges()
+{
+  vector<int> teste(5, 10);
+  cout << "Valor do vetor 1 inicial :" << v << endl;
+  cout << "Valor do vetor 2 inicial :" << teste << endl;
+
+  swap_ranges(v.begin() + 1, v.end() - 1, teste.begin());
+  cout << "Valor do vetor 1 trocado a partir da posicao 1 ate a posicao 3 :" << v << endl;
+  cout << "Valor do vetor 2 trocado a partir do comeco:" << teste << endl;
+}
+
+/*Funcao: generate_n
+Generate values for sequence with function
+Assigns the value returned by successive calls to gen to the first n elements of the sequence pointed by first. */
+
+int atual = 0;
+int Dobro() { return (atual++) * 2; }
+
+void CTesteFuncoesGenericas::Uso_de_generate_n()
+{
+
+  vector<int> teste(10, 0);
+  generate_n(teste.begin(), 10, Dobro);
+
+  cout << "Os valores do vetor criado sao: " << teste << endl;
+}
+
+/*Funcao: unique
+std::unique is used to remove duplicates of any element present consecutively in a range[first, last).
+It performs this task for all the sub-groups present in the range having the same element present consecutively.
+*/
+void CTesteFuncoesGenericas::Uso_de_unique()
+{
+  vector<int>::iterator itt1, itt2;
+  cout << "Valores do vetor 1 antes: " << v << endl;
+  itt1 = unique(v.begin(), v.end());
+  cout << "Valores do vetor 1 depois: " << v << endl;
+  cout << "Valores do vetor iterador 1: " << *itt1 << endl;
+
+  vector<int> v1{0, 1, 2, 2, 3, 4, 2, 4, 4, 2, 5, 6, 10};
+  cout << "Valores do vetor 2 antes: " << v1 << endl;
+  itt2 = unique(v1.begin(), v1.end());
+  cout << "Valores do vetor 2 depois: " << v1 << endl;
+  cout << "Valores do vetor iterador 2: " << *itt2 << endl;
+  cout << "Posicao do vetor iterador 2: " << (itt2 - v1.begin()) << endl;
+
+  // v1.resize(std::distance(v1.begin(), itt2));
+}
+
+/*Funcao: is_partitioned
+std::is_partitioned is used for finding whether the range[first, last) is partitioned or not.
+A range is said to be partitioned with respect to a condition if all the elements for which the condition
+evaluates to true precede those for which it is false. */
+
+void CTesteFuncoesGenericas::Uso_de_is_partitioned()
+{
+  vector<int> teste1{1, 3, -5, 7};
+  vector<int> teste2{-1, 3, 5, 7};
+  bool resposta;
+
+  cout << "Condicao avaliada: os numeros sao negativos.";
+  resposta = is_partitioned(teste1.begin(), teste1.end(), Negativo);
+  cout << "Os dados do vetor " << teste1 << " estao parcionados? " << resposta << endl;
+  resposta = is_partitioned(teste2.begin(), teste2.end(), Negativo);
+  cout << "Os dados do vetor " << teste2 << " estao parcionados? " << resposta << endl;
+}
+
+/* Funcao: partition_point
+This function returns an iterator pointing to the partition point of container i.e.
+the first element in the partitioned range [beg,end) for which condition is not true.
+The container should already be partitioned for this function to work. */
+
+void CTesteFuncoesGenericas::Uso_de_partition_point()
+{
+  vector<int> teste2{-1, 3, 5, 7};
+  cout << "Os dados do vetor parcionados: " << teste2 << endl;
+  vector<int>::iterator itt = partition_point(teste2.begin(), teste2.end(), Negativo);
+  cout << "O primeiro elemento a tornar verdadeiro o parcionamento e " << *itt << endl;
+  cout << "A posicao no vetor e " << (itt - teste2.begin()) << endl;
+}
+
+/*Funcao: partial_sort_copy
+std::partial_sort is used for sorting the range within the entire container.
+So, if we want to keep the original container intact and just copy the sorted sub-part of the container into
+another one, then for that purpose, we can use std::partial_sort_copy.*/
+
+void CTesteFuncoesGenericas::Uso_de_partial_sort_copy()
+{
+  vector<int> v1{1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
+  vector<int> resposta(10);
+
+  cout << "Vetor inicial: " << v1 << endl;
+  partial_sort_copy(v1.begin(), v1.end() - 2, resposta.begin(), resposta.end());
+  cout << "Vetor final: " << resposta << endl;
+
+  vector<string> txt1{"biscoito", "agua", "cafe"};
+  vector<string> txt2(3);
+
+  cout << "Vetor inicial: " << txt1 << endl;
+  partial_sort_copy(txt1.begin(), txt1.end(), txt2.begin(), txt2.end());
+  cout << "Vetor final: " << txt2 << endl;
+}
+
+/* Funcao: upper_bound
+Return iterator to upper bound
+Returns an iterator pointing to the first element in the range [first,last) which compares greater than value indicated. */
+
+void CTesteFuncoesGenericas::Uso_de_upper_bound()
+{
+  vector<int>::iterator upper;
+  upper = upper_bound(v.begin(), v.end(), 2);
+  cout << "Os valores do vetor sao: " << v << endl;
+  cout << "O primeiro valor alem do escolhido (2) e " << *upper << endl;
+}
+
+/* Funcao push_heap
+Heap data structure can be implemented in a range using STL which allows faster input into heap and retrieval of
+a number always results in the largest number i.e. largest number of the remaining numbers is popped out each time.
+This function is used to insert elements into heap. The size of the heap is increased by 1.
+New element is placed appropriately in the heap. */
+void CTesteFuncoesGenericas::Uso_de_push_heap()
+{
+  vector<int> v1{10, 20, 50, 40, 30};
+  cout << "Os valores do vetor sao: " << v1 << endl;
+  make_heap(v1.begin(), v1.end());
+  //cout << "Os novos valores do vetor sao, apos criar o heap: " << v1 << endl;
+  cout << "O valor maximo do heap criado a partir do vetor e :" << v1.front() << endl;
+  //cout << "Os valores finais do vetor sao: " << v1 << endl;
+
+  v1.push_back(55);
+  cout << "Os valores do vetor sao: " << v1 << endl;
+  push_heap(v1.begin(), v1.end());
+  //cout << "O novo valor maximo do heap e :" << v1.front() << endl;
+  cout << "O valor maximo do heap criado a partir do vetor e :" << v1.front() << endl;
+  //cout << "Os valores finais do vetor sao: " << v1 << endl;
+}
+
+/* Funcao is_heap_until
+Returns and iterator to the first element of the range [first, last) which is not in a valid position if the range is
+considered a heap */
+
+void CTesteFuncoesGenericas::Uso_de_is_heap_until()
+{
+  vector<int> numeros{9, 1, 4, 5, 7, 8, 2, 6, 3, 0};
+
+  auto primeiro = is_heap_until(numeros.begin(), numeros.end());
+
+  cout << "O primeiro valor a nao ser entendido como heap e " << *primeiro << " , e esta na posicao " << (primeiro - numeros.begin()) << endl;
+
+  sort(numeros.begin(), numeros.end());
+  reverse(numeros.begin(), numeros.end());
+
+  auto ultimo = is_heap_until(numeros.begin(), numeros.end());
+  cout << "Os " << (ultimo - numeros.begin()) << " primeiros elementos de um heap valido sao: ";
+
+  for (auto itt = numeros.begin(); itt != numeros.end(); ++itt)
+    cout << ' ' << *itt;
+  cout << "\n";
+}
+
+/* Funcao min_element
+ std::min_element is defined inside the header file <algorithm> and it returns an iterator pointing to the
+ element with the smallest value in the range [first, last). */
+
+void CTesteFuncoesGenericas::Uso_de_min_element()
+{
+  vector<int>::iterator upper;
+  vector<int>::iterator itt = min_element(v.begin() + 1, v.end());
+  cout << "O valor do menor elemento no range especificado e : " << *itt << endl;
+}
+
+/* Funcao prev_permutation
+It is used to rearrange the elements in the range [first, last) into the next lexicographically greater permutation. */
+
+void CTesteFuncoesGenericas::Uso_de_prev_permutation()
+{
+
+  string s = "abc";
+  sort(s.begin(), s.end(), greater<char>());
+  do
+  {
+    cout << s << " ";
+  } while (prev_permutation(s.begin(), s.end()));
+  cout << "\n";
 }
 
 void CTesteFuncoesGenericas::Uso_de_find()
@@ -735,6 +1088,8 @@ void CTesteFuncoesGenericas::Uso_de_count()
 void CTesteFuncoesGenericas::Uso_de_copy_n()
 {
   int n = 3;
+  // std::cout << v << std::endl;
+  InicializaVetor(v);
   v2.resize(n);
   copy_n(v.begin(), n, v2.end());
   cout << "Os primeiros " << n << " elementos do vetor v:" << v2 << endl;
