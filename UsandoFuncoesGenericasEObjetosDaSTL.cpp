@@ -10,6 +10,7 @@
 #include <iterator>   // Iteradores
 #include <cctype>     //
 #include <deque>      //
+#include <random>     //
 
 using namespace std; // Define o uso do espaço de nomes std
 
@@ -35,7 +36,6 @@ private:                // Métodos privados
   void Uso_de_fill_n(); // Preenchimento
   void Uso_de_equal();  // Comparação
   void Uso_de_mismatch();
-  void Uso_de_includes();
   void Uso_de_remove_copy_if();  // Remoção
   void Uso_de_replace_copy_if(); // Trocas
   void Uso_de_inplace_merge();   // Misturar/mesclar/inverter
@@ -108,6 +108,21 @@ private:                // Métodos privados
   void Uso_de_pop_heap();
   void Uso_de_min();
   void Uso_de_max_element();
+
+  void Uso_de_any_of();
+  void Uso_de_find_first_of();
+  void Uso_de_search();
+  void Uso_de_swap();
+  void Uso_de_fill();
+  void Uso_de_remove_copy();
+  void Uso_de_shuffle();
+  void Uso_de_partition_copy();
+  void Uso_de_partial_sort();
+  void Uso_de_lower_bound();
+  void Uso_de_includes();
+  void Uso_de_is_heap();
+  void Uso_de_minmax();
+  void Uso_de_lexicographical_compare();
 }; // fim da classe
 
 bool CNumeroImpar(int i)
@@ -170,7 +185,7 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "includes", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "none_of", "adjacent_find", "copy", "swap_ranges", "generate_n", "unique", "is_partitioned", "partition_point", "partial_sort_copy", "upper_bound", "push_heap", "is_heap_until", "min_element", "prev_permutation", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", "sort", "is_sorted", "equal_range", "pop_heap", "min", "max_element", " Mostra vetor"};
+      "fill_n", "equal", "mismatch", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "none_of", "adjacent_find", "copy", "swap_ranges", "generate_n", "unique", "is_partitioned", "partition_point", "partial_sort_copy", "upper_bound", "push_heap", "is_heap_until", "min_element", "prev_permutation", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", "sort", "is_sorted", "equal_range", "pop_heap", "min", "max_element", "any_of", "find_first_of", "search", "swap", "fill", "remove_copy", "shuffle", "partition_copy", "partial_sort", "lower_bound", "includes", "is_heap", "minmax", "lexicographical_compare", " Mostra vetor"};
 
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
@@ -202,8 +217,6 @@ bool CTesteFuncoesGenericas::Run()
     Uso_de_equal();
   else if (funcoes[selecao] == "mismatch")
     Uso_de_mismatch();
-  else if (funcoes[selecao] == "includes")
-    Uso_de_includes();
   else if (funcoes[selecao] == "remove_copy_if")
     Uso_de_remove_copy_if();
   else if (funcoes[selecao] == "replace_copy_if")
@@ -351,6 +364,35 @@ bool CTesteFuncoesGenericas::Run()
   else if (funcoes[selecao] == "max_element")
     Uso_de_max_element();
 
+  else if (funcoes[selecao] == "any_of")
+    Uso_de_any_of();
+  else if (funcoes[selecao] == "find_first_of")
+    Uso_de_find_first_of();
+  else if (funcoes[selecao] == "search")
+    Uso_de_search();
+  else if (funcoes[selecao] == "swap")
+    Uso_de_swap();
+  else if (funcoes[selecao] == "fill")
+    Uso_de_fill();
+  else if (funcoes[selecao] == "remove_copy")
+    Uso_de_remove_copy();
+  else if (funcoes[selecao] == "shuffle")
+    Uso_de_shuffle();
+  else if (funcoes[selecao] == "partition_copy")
+    Uso_de_partition_copy();
+  else if (funcoes[selecao] == "partial_sort")
+    Uso_de_partial_sort();
+  else if (funcoes[selecao] == "lower_bound")
+    Uso_de_lower_bound();
+  else if (funcoes[selecao] == "includes")
+    Uso_de_includes();
+  else if (funcoes[selecao] == "is_heap")
+    Uso_de_is_heap();
+  else if (funcoes[selecao] == "minmax")
+    Uso_de_minmax();
+  else if (funcoes[selecao] == "lexicographical_compare")
+    Uso_de_lexicographical_compare();
+
   // Mostra o vetor
   else if (funcoes[selecao] == "Mostra vetor")
     cout << setfill(' ') << "Vetor  v= " << v << endl;
@@ -386,30 +428,17 @@ void CTesteFuncoesGenericas::Uso_de_mismatch()
   cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
 }
 
-// CTesteFuncoesGenericas::Uso_de_includes
-void CTesteFuncoesGenericas::Uso_de_includes()
-{
-  v3 = v2 = v;
-  v3.push_back(123);
-  v2.push_back(333);
-  cout << setw(30) << "Vetor  v2= " << v2 << endl;
-  cout << setw(30) << "Vetor  v3= " << v3 << endl;
-  //  cout.imbue(locale("pt_BR")); // opcional
-  cout << setw(30) << "v  inclue v2 -> " << boolalpha << includes(v.begin(), v.end(), v2.begin(), v2.end()) << endl;
-  cout << setw(30) << "v3 inclue v2 -> " << boolalpha << includes(v3.begin(), v3.end(), v2.begin(), v2.end()) << endl;
-  cout << setw(30) << "v  inclue v3 -> " << boolalpha << includes(v.begin(), v.end(), v3.begin(), v3.end()) << endl;
-  cout << setw(30) << "v2 inclue v3 -> " << boolalpha << includes(v2.begin(), v2.end(), v3.begin(), v3.end()) << endl;
-  cout << setw(30) << "v2 inclue v  -> " << boolalpha << includes(v2.begin(), v2.end(), v.begin(), v.end()) << endl;
-  cout << setw(30) << "v3 inclue v  -> " << boolalpha << includes(v3.begin(), v3.end(), v.begin(), v.end()) << endl;
-}
-
 // Remoção
 void CTesteFuncoesGenericas::Uso_de_remove_copy_if()
 {
-  vector<int> v = {1, 2, 3, 4, 5, 6};
-  vector<int> v2(6);
-  remove_copy_if(v.begin(), v.end(), v2.begin(), [=](int i) { return i % 2; });
-  cout << v2 << endl;
+  int ints[] = {0, 1, 2, 3, 4};
+  vector<int> v(5);
+  remove_copy_if(ints, ints + 5, v.begin(), CNumeroImpar);
+
+  cout << "remove_copy_if (valores pares): v=";
+  for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
+    cout << ' ' << *it;
+  cout << '\n';
 }
 
 // Trocas
@@ -561,7 +590,11 @@ void CTesteFuncoesGenericas::Uso_de_transform()
 // Matemáticos
 void CTesteFuncoesGenericas::Uso_de_nth_element()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  nth_element(v.begin(), v.begin() + 1, v.end(), greater<int>());
+  cout << "O segundo maior elemento é: " << v[1] << '\n';
+
+  nth_element(v.begin(), v.begin() + v.size() / 2, v.end());
+  cout << "A mediana é: " << v[v.size() / 2] << '\n';
 }
 
 void CTesteFuncoesGenericas::Uso_de_counf_if()
@@ -732,7 +765,12 @@ void CTesteFuncoesGenericas::Uso_de_not_equal_to()
 
 void CTesteFuncoesGenericas::Uso_de_greater()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  InicializaVetor(v);
+  const float valor = 2;
+  partition(v.begin(), v.end(), bind2nd(greater<int>(), valor));
+  cout << "Rearranja o vetor de forma que todos os elementos "
+       << "\nmaiores que 2 vão para o início"
+       << "\nVetor  v após less<int>(2)= " << v << endl;
 }
 
 // Cada elemento do vetor menor que 2 irá para o início
@@ -770,7 +808,13 @@ void CTesteFuncoesGenericas::Uso_de_logical_and()
 
 void CTesteFuncoesGenericas::Uso_de_logical_or()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  bool vetor1[] = {true, false, true, false};
+  bool vetor2[] = {true, true, false, false};
+  bool resultado[4];
+  transform(vetor1, vetor1 + 4, vetor2, resultado, logical_or<bool>());
+  cout << boolalpha << "Logical OR:\n";
+  for (int i = 0; i < 4; i++)
+    cout << vetor1[i] << " OR " << vetor2[i] << " = " << resultado[i] << "\n";
 }
 
 void CTesteFuncoesGenericas::Uso_de_logical_not()
@@ -1178,6 +1222,267 @@ void CTesteFuncoesGenericas::Uso_de_max_element()
 {
   EntradaUsuario(v);
   cout << "Maior elemento em v: " << *max_element(v.begin(), v.end()) << endl;
+}
+
+// ANY_OF: testa se qualquer elemento do vetor satisfaz as condi��es estabelecidas
+void CTesteFuncoesGenericas::Uso_de_any_of()
+{
+
+  vector<int> v(5, 1);
+  partial_sum(v.cbegin(), v.cend(), v.begin());
+  cout << "Dentre os números ";
+  copy(v.cbegin(), v.cend(), ostream_iterator<int>(cout, " "));
+  cout << '\n';
+
+  struct Divisivelpor
+  {
+    const int d;
+    Divisivelpor(int n) : d(n) {}
+    bool operator()(int n) const { return n % d == 0; }
+  };
+
+  if (any_of(v.cbegin(), v.cend(), Divisivelpor(2)))
+  {
+    cout << "Pelo menos um número é divisível por 2\n";
+  }
+  else
+    (cout << "Nenhum número é divisível por 2\n");
+  {
+  }
+}
+
+// FIND_FIRST_OF: encontra o primeiro elemento do vetor
+void CTesteFuncoesGenericas::Uso_de_find_first_of()
+{
+
+  int ints[] = {1, 2, 3, 4, 5};
+  vector<int> v(ints, ints + 5);
+  vector<int>::iterator it;
+
+  it = find_first_of(v.begin(), v.end(), ints, ints + 5);
+
+  if (it != v.end())
+    cout << "O primeiro encontrado é: " << *it << '\n';
+}
+
+// SEARCH: encontra um elemento do vetor
+void CTesteFuncoesGenericas::Uso_de_search()
+{
+
+  vector<int> v(5, 1);
+  partial_sum(v.cbegin(), v.cend(), v.begin());
+  cout << "Dentre os números ";
+  copy(v.cbegin(), v.cend(), ostream_iterator<int>(cout, " "));
+  cout << '\n';
+
+  //usando search
+  int encontre[] = {6};
+  vector<int>::iterator it;
+  it = search(v.begin(), v.end(), encontre, encontre + 1);
+
+  if (it != v.end())
+    cout << "O número 6 foi encontrado na posição: " << (it - v.begin()) << '\n';
+  else
+    cout << "O número 6 não foi encontrado\n";
+}
+
+// SWAP: troca as posi��es
+void CTesteFuncoesGenericas::Uso_de_swap()
+{
+  vector<int> v(5, 1);
+  partial_sum(v.cbegin(), v.cend(), v.begin());
+  cout << "v = ";
+  copy(v.cbegin(), v.cend(), ostream_iterator<int>(cout, " "));
+  cout << '\n';
+
+  vector<int> v1(5, 2);
+  partial_sum(v1.cbegin(), v1.cend(), v1.begin());
+  cout << "v1= ";
+  copy(v1.cbegin(), v1.cend(), ostream_iterator<int>(cout, " "));
+  cout << '\n';
+
+  swap(v, v1);
+
+  cout << "V após a troca";
+  for (int i : v)
+    cout << ' ' << i;
+  cout << '\n';
+}
+
+// FILL: atribui o valor desejado a todos os elementos do intervalo declarado
+void CTesteFuncoesGenericas::Uso_de_fill()
+{
+  vector<int> v(5, 1);
+  partial_sum(v.cbegin(), v.cend(), v.begin());
+  cout << "v = ";
+  copy(v.cbegin(), v.cend(), ostream_iterator<int>(cout, " "));
+  cout << '\n';
+
+  fill(v.begin(), v.begin() + 3, 7);
+
+  cout << "O vetor v após o preenchimento";
+  for (vector<int>::iterator it = v.begin(); it != v.end(); ++it)
+    cout << ' ' << *it;
+  cout << '\n';
+}
+
+// REMOVE_COPY: remove o elemento desejado
+void CTesteFuncoesGenericas::Uso_de_remove_copy()
+{
+  int num[] = {1, 2, 3, 4, 5};
+  vector<int> v(5);
+  cout << "v = 1 2 3 4 5";
+  cout << '\n';
+
+  remove_copy(num, num + 5, v.begin(), 3);
+
+  cout << "O vetor v após retirar o 3:";
+  for (vector<int>::iterator it = v.begin(); it != v.end(); ++it)
+    cout << ' ' << *it;
+  cout << '\n';
+}
+
+// SHUFFLE **
+void CTesteFuncoesGenericas::Uso_de_shuffle()
+{
+  vector<int> v(10, 1);
+  partial_sum(v.cbegin(), v.cend(), v.begin());
+  cout << "Vetor v ordenado: ";
+  copy(v.cbegin(), v.cend(), ostream_iterator<int>(cout, " "));
+  cout << '\n';
+
+  random_device rd;
+  mt19937 g(rd());
+
+  shuffle(v.begin(), v.end(), g);
+
+  cout << "Vetor v ap�s o shuffle: ";
+  copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
+  cout << "\n";
+}
+
+// PARTITION_COPY:  Particiona os elementos de acordo com a função predicado (true/false)
+
+bool defimpar(int i) { return (i % 2) == 1; }
+
+void CTesteFuncoesGenericas::Uso_de_partition_copy()
+{
+  vector<int> v{1, 2, 3, 4, 5, 6, 7, 8, 9};
+  vector<int> impar, par;
+  cout << "v = 1 2 3 4 5 6 7 8 9";
+  cout << '\n';
+
+  int n = count_if(v.begin(), v.end(), defimpar);
+  impar.resize(n);
+  par.resize(v.size() - n);
+
+  partition_copy(v.begin(), v.end(), impar.begin(), par.begin(), defimpar);
+
+  cout << "Impar: ";
+  for (int &x : impar)
+    cout << ' ' << x;
+  cout << '\n';
+  cout << "Par: ";
+  for (int &x : par)
+    cout << ' ' << x;
+  cout << '\n';
+}
+
+// PARTIAL_SORT: Reorganiza parcialmente os elementos
+void CTesteFuncoesGenericas::Uso_de_partial_sort()
+{
+
+  vector<int> v{4, 8, 9, 7, 6, 5, 2, 3, 1};
+  cout << "v = 4 8 9 7 6 5 2 3 1";
+  cout << '\n';
+
+  partial_sort(v.begin(), v.begin() + 4, v.end());
+  cout << "Colocando em ordem os 4 primeiros elementos:";
+  cout << '\n';
+  for (int a : v)
+  {
+    cout << a << " ";
+  }
+}
+
+// LOWER_BOUND: limite inferior
+void CTesteFuncoesGenericas::Uso_de_lower_bound()
+{
+  int num[] = {1, 2, 3, 5, 5, 5, 7, 8, 9};
+  vector<int> v(num, num + 9);
+  cout << "v = 1 2 3 5 5 5 7 8 9";
+  cout << '\n';
+
+  //sort (v.begin(), v.end());
+
+  vector<int>::iterator abaixo;
+  abaixo = lower_bound(v.begin(), v.end(), 5);
+
+  cout << "Elementos do intervalo maiores ou igual a 5 a partir da posi��o: " << (abaixo - v.begin()) << '\n';
+}
+
+// INCLUDES: analisa os vetores e compara entre si
+void CTesteFuncoesGenericas::Uso_de_includes()
+{
+  v2 = v;
+  v2.push_back(5);
+  cout << setw(30) << "Vetor  v = " << v << endl;
+  cout << setw(30) << "Vetor  v2= " << v2 << endl;
+  //  cout.imbue(locale("pt_BR")); // opcional
+  cout << setw(30) << "v  inclui v2 -> " << boolalpha << includes(v.begin(), v.end(), v2.begin(), v2.end()) << endl;
+  cout << setw(30) << "v2 inclui v  -> " << boolalpha << includes(v2.begin(), v2.end(), v.begin(), v.end()) << endl;
+}
+
+// IS_HEAP **
+void CTesteFuncoesGenericas::Uso_de_is_heap()
+{
+  vector<int> v{9, 5, 2, 6, 4, 1, 3, 8, 7};
+  cout << "v = 9 5 2 6 4 1 3 8 7";
+  cout << '\n';
+
+  if (!is_heap(v.begin(), v.end()))
+    make_heap(v.begin(), v.end());
+
+  cout << "Organizando o heap:";
+  while (!v.empty())
+  {
+    pop_heap(v.begin(), v.end()); // move o maior elemento para o final
+    cout << ' ' << v.back();      // imprime de volta
+    v.pop_back();                 // reduz o tamanho do container
+  }
+  cout << '\n';
+}
+
+// MINMAX: Declara o valor mínimo e o valor máximo dentro do alcance
+void CTesteFuncoesGenericas::Uso_de_minmax()
+{
+
+  auto v = minmax({1, 2, 3, 4, 5});
+
+  cout << "O mínimo e o máximo respectivamente dentre 1,2,3,4,5 são: ";
+  cout << v.first << ' ' << v.second << '\n';
+}
+
+// LEXICOGRAPHICAL_COMPARE
+void CTesteFuncoesGenericas::Uso_de_lexicographical_compare()
+{
+  char n1[] = "ilana";
+  char n2[] = "neida";
+
+  cout << boolalpha;
+
+  cout << "Comparando lexicograficamente neida e ilana (ilana<neida):\n";
+  cout << lexicographical_compare(n1, n1 + 5, n2, n2 + 5);
+  cout << '\n';
+
+  char n3[] = "neidx";
+  char n4[] = "neida";
+
+  cout << boolalpha;
+
+  cout << "Comparando lexicograficamente neidx e neida (neidx<neida):\n";
+  cout << lexicographical_compare(n3, n3 + 5, n4, n4 + 5);
+  cout << '\n';
 }
 
 int main()
