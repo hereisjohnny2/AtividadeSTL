@@ -109,6 +109,21 @@ private:                // Métodos privados
   void Uso_de_min();
   void Uso_de_max_element();
 
+  void Uso_de_all_of();
+  void Uso_de_find_end();
+  void Uso_de_is_permutation();
+  void Uso_de_copy_backward();
+  void Uso_de_replace();
+  void Uso_de_remove_if();
+  void Uso_de_rotate_copy();
+  void Uso_de_stable_partition();
+  void Uso_de_stable_sort();
+  void Uso_de_is_sorted_until();
+  void Uso_de_merge();
+  void Uso_de_sort_heap();
+  void Uso_de_max();
+  void Uso_de_minmax_element();
+
   void Uso_de_any_of();
   void Uso_de_find_first_of();
   void Uso_de_search();
@@ -185,8 +200,7 @@ ostream &operator<<(ostream &os, const vector<Tipo> &v)
 bool CTesteFuncoesGenericas::Run()
 {
   vector<string> funcoes = {
-      "fill_n", "equal", "mismatch", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "none_of", "adjacent_find", "copy", "swap_ranges", "generate_n", "unique", "is_partitioned", "partition_point", "partial_sort_copy", "upper_bound", "push_heap", "is_heap_until", "min_element", "prev_permutation", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", "sort", "is_sorted", "equal_range", "pop_heap", "min", "max_element", "any_of", "find_first_of", "search", "swap", "fill", "remove_copy", "shuffle", "partition_copy", "partial_sort", "lower_bound", "includes", "is_heap", "minmax", "lexicographical_compare", " Mostra vetor"};
-
+      "fill_n", "equal", "mismatch", "remove_copy_if", "replace_copy_if", "inplace_merge", "reverse_copy", "random_shuffle", "find_if", "find_if_off", "adjacent_difference", "search_n", "binary_search", "advance", "next_permutation", "reverse", "rotate", "generate", "for_each", "transform", "nth_element", "counf_if", "accumulate", "inner_product", "set_union", "set_intersection", "set_difference", "set_symmetric_difference", "make_heap", "plus", "minus", "times", "multiplies", "divides", "modulus", "negate", "equal_to", "not_equal_to", "greater", "less", "greater_equal", "less_equal", "logical_and", "logical_or", "logical_not", "bind2nd", "not1", "men_fun_ref", "none_of", "adjacent_find", "copy", "swap_ranges", "generate_n", "unique", "is_partitioned", "partition_point", "partial_sort_copy", "upper_bound", "push_heap", "is_heap_until", "min_element", "prev_permutation", "find", "count", "copy_n", "iter_swap", "remove", "unique_copy", "partition", "sort", "is_sorted", "equal_range", "pop_heap", "min", "max_element", "all_of", "find_end", "is_permutation", "copy_backward", "replace", "remove_if", "rotate_copy", "stable_partition", "stable_sort", "is_sorted_until", "merge", "sort_heap", "max", "minmax_element", "any_of", "find_first_of", "search", "swap", "fill", "remove_copy", "shuffle", "partition_copy", "partial_sort", "lower_bound", "includes", "is_heap", "minmax", "lexicographical_compare", " Mostra vetor"};
   cout << "============================================================\n"
        << "============= Qual função deseja testar ??? ================\n"
        << "============================================================\n";
@@ -364,6 +378,35 @@ bool CTesteFuncoesGenericas::Run()
   else if (funcoes[selecao] == "max_element")
     Uso_de_max_element();
 
+  else if (funcoes[selecao] == "all_of")
+    Uso_de_all_of();
+  else if (funcoes[selecao] == "find_end")
+    Uso_de_find_end();
+  else if (funcoes[selecao] == "is_permutation")
+    Uso_de_is_permutation();
+  else if (funcoes[selecao] == "copy_backward")
+    Uso_de_copy_backward();
+  else if (funcoes[selecao] == "replace")
+    Uso_de_replace();
+  else if (funcoes[selecao] == "remove_if")
+    Uso_de_remove_if();
+  else if (funcoes[selecao] == "rotate_copy")
+    Uso_de_rotate_copy();
+  else if (funcoes[selecao] == "stable_partition")
+    Uso_de_stable_partition();
+  else if (funcoes[selecao] == "stable_sort")
+    Uso_de_stable_sort();
+  else if (funcoes[selecao] == "is_sorted_until")
+    Uso_de_is_sorted_until();
+  else if (funcoes[selecao] == "merge")
+    Uso_de_merge();
+  else if (funcoes[selecao] == "sort_heap")
+    Uso_de_sort_heap();
+  else if (funcoes[selecao] == "max")
+    Uso_de_max();
+  else if (funcoes[selecao] == "minmax_element")
+    Uso_de_minmax_element();
+
   else if (funcoes[selecao] == "any_of")
     Uso_de_any_of();
   else if (funcoes[selecao] == "find_first_of")
@@ -425,7 +468,19 @@ void CTesteFuncoesGenericas::Uso_de_equal()
 }
 void CTesteFuncoesGenericas::Uso_de_mismatch()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  vector<int> u1 = {2, 3, 4, 6, 8};
+  vector<int> u2 = {2, 5, 4, 7, 8};
+  //declarando o par
+  pair<vector<int>::iterator,
+       vector<int>::iterator>
+      mypair;
+  //comparando os valores dos vetores
+  mypair = mismatch(u1.begin(), u1.end(), u2.begin());
+  //imprimir a comparação
+  cout << "A primeira diferenca e: ";
+  cout << *mypair.first << endl;
+  cout << "A segunda diferenca e: ";
+  cout << *mypair.second << endl;
 }
 
 // Remoção
@@ -475,7 +530,10 @@ void CTesteFuncoesGenericas::Uso_de_inplace_merge()
 
 void CTesteFuncoesGenericas::Uso_de_reverse_copy()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  vector<int> dest(v);
+  reverse_copy(begin(v), end(v), dest.begin());
+  cout << "O inverso do vertor e: ";
+  cout << dest << endl;
 }
 
 // Embaralha os elementos do container
@@ -584,7 +642,10 @@ void CTesteFuncoesGenericas::Uso_de_for_each()
 
 void CTesteFuncoesGenericas::Uso_de_transform()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  std::string s("Curso de engenharia de petr�leo");
+  cout << s << endl;
+  std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) -> unsigned char { return std::toupper(c); });
+  cout << s << endl;
 }
 
 // Matemáticos
@@ -698,7 +759,11 @@ void CTesteFuncoesGenericas::Uso_de_minus()
 
 void CTesteFuncoesGenericas::Uso_de_times()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  time_t now = time(0);
+  //convertendo para string
+  char *dt = ctime(&now);
+
+  cout << "O tempo e data local é: " << dt << endl;
 }
 
 // Uso da função binária multiplies e de transform
@@ -803,7 +868,16 @@ void CTesteFuncoesGenericas::Uso_de_less_equal()
 // Funçães lógicas
 void CTesteFuncoesGenericas::Uso_de_logical_and()
 {
-  cout << msg << "Exercício: Montar este exemplo. " << msg << endl;
+  bool verd[] = {true, true, false, true, true};
+  bool fals[] = {true, false, false, false, true};
+  //define as iterações
+  bool iter[5];
+  //gera a lógica
+  std::transform(verd, verd + 5, fals, iter, std::logical_and<bool>());
+  cout << "Logica E:\n";
+  for (int i = 0; i < 5; i++)
+    cout << verd[i] << "E" << fals[i] << " = " << iter[i] << '\n';
+  return;
 }
 
 void CTesteFuncoesGenericas::Uso_de_logical_or()
@@ -1222,6 +1296,215 @@ void CTesteFuncoesGenericas::Uso_de_max_element()
 {
   EntradaUsuario(v);
   cout << "Maior elemento em v: " << *max_element(v.begin(), v.end()) << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_all_of()
+{
+  vector<int> v = {1, 2, 3, 4, 5};
+  bool resultado;
+  cout << "V =" << v << "\n";
+
+  resultado = std::all_of(v.begin(), v.end(), [](int i) { return i % 2 == 0; });
+
+  if (resultado == true)
+  {
+    std::cout << "todos os numeros sao pares!\n";
+  }
+  if (resultado == false)
+  {
+    std::cout << "Nem todos os numeros sao pares!\n"
+              << endl;
+  }
+}
+
+void CTesteFuncoesGenericas::Uso_de_find_end()
+{
+  vector<int> v = {1, 2, 3, 4, 5, 6, 1, 2, 3};
+  vector<int> v2 = {1, 2, 3};
+
+  cout << 'V1 = ' << v;
+  cout << "V2 = " << v2;
+
+  auto resultado = std::find_end(v.begin(), v.end(), v2.begin(), v2.end());
+
+  if (resultado != v.end())
+  {
+    std::cout << "Ultima sequencia localizada em:" << distance(v.begin(), resultado) << "\n";
+  }
+  if (resultado == v.end())
+  {
+    std::cout << "Sequencia nao presente no vetor \n"
+              << endl;
+  }
+}
+
+void CTesteFuncoesGenericas::Uso_de_is_permutation()
+{
+  vector<int> v = {3, 5, 2, 1, 4};
+  vector<int> v2 = {1, 2, 3, 4, 5};
+
+  bool resultado;
+  cout << "v1 = " << v << "\n";
+  cout << "v2 = " << v2 << "\n";
+
+  resultado = is_permutation(v.begin(), v.end(), v2.begin(), v2.end());
+
+  if (resultado == true)
+  {
+    std::cout << "Os dois vetores possuem os mesmos elementos\n";
+  }
+
+  if (resultado == false)
+  {
+    std::cout << "Os vetores nao possuem os mesmos elementos\n";
+  }
+}
+
+void CTesteFuncoesGenericas::Uso_de_copy_backward()
+{
+  vector<int> v = {1, 2, 3, 4, 5};
+  vector<int> v2(10);
+  copy_backward(v.begin(), v.end(), v2.end());
+
+  cout << "O vetor 2 tem os seguintes elementos:" << endl;
+
+  for (auto it = v2.begin(); it != v2.end(); ++it)
+    cout << *it << endl;
+
+  return;
+}
+
+void CTesteFuncoesGenericas::Uso_de_replace()
+{
+  vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+  cout << "Antes do replace:" << v << endl;
+
+  std::replace(v.begin(), v.end(), 5, 33);
+
+  cout << "Depois do replace:" << v << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_remove_if()
+{
+
+  std::vector<int> v{1, 2, 3, 4, 5};
+  std::cout << "Vetor antes de remove_if: \n";
+  std::cout << v << "\n";
+
+  auto resultado = std::remove_if(v.begin(), v.end(), [](int i) { return ((i % 2) == 0); });
+
+  std::cout << "Vetor depois de remove_if: \n";
+  for (std::vector<int>::iterator q = v.begin(); q != resultado; ++q)
+    std::cout << " " << *q;
+  std::cout << "\n";
+
+  return;
+}
+
+void CTesteFuncoesGenericas::Uso_de_rotate_copy()
+{
+  //copia o vetor mudando a ordem do argumentos (do meio pro final para o começo)
+  int vetor[] = {1, 2, 3, 4, 5, 6, 7};
+
+  std::vector<int> meuvetor(7);
+  std::rotate_copy(vetor, vetor + 3, vetor + 7, meuvetor.begin());
+
+  std::cout << "Vetor: \n";
+  for (auto i = meuvetor.begin(); i != meuvetor.end(); i++)
+    cout << " " << *i << endl;
+
+  return;
+}
+
+void CTesteFuncoesGenericas::Uso_de_stable_partition()
+{
+  vector<int> v{6, 9, 0, 1, 2, 7, 5, 8, 0, -1};
+  cout << "V = " << v;
+
+  stable_partition(v.begin(), v.end(), [](int n) { return n > 0; });
+  for (int n : v)
+  {
+    cout << n << ' ';
+  }
+  cout << '\n';
+}
+
+void CTesteFuncoesGenericas::Uso_de_stable_sort()
+{
+  //reorganiza o vetor de maneira crescente preservando a ordem de elementos equivalentes
+  vector<int> v = {3, 1, 4, 2, 5};
+
+  cout << "Antes do sorting: ";
+  cout << v << " ";
+
+  stable_sort(v.begin(), v.end());
+
+  cout << "\nDepois do sorting:  ";
+  cout << v << " "
+       << "\n";
+}
+
+void CTesteFuncoesGenericas::Uso_de_is_sorted_until()
+{
+  //Retorna a quantidade de elmentos no vetor e o primeiro elemento fora de ordem
+  int v[] = {1, 2, 3, 4, 7, 10, 8, 9}, i;
+
+  int *resultado;
+
+  resultado = std::is_sorted_until(v, v + 8);
+
+  cout << "Existem " << (resultado - v) << " elementos em sequencia em v \n"
+       << "O primeiro elemento fora de ordem e: " << *resultado << "\n";
+
+  return;
+}
+
+void CTesteFuncoesGenericas::Uso_de_merge()
+{
+  //combina os vetores e ordena aleatóriamente
+
+  vector<int> v1 = {1, 2, 3, 4, 5, 6};
+  vector<int> v2 = {7, 8, 9, 10, 11, 12};
+  std::vector<int> v(12);
+
+  sort(v1.begin(), v1.end());
+  sort(v2.begin(), v2.end());
+
+  merge(v1.begin(), v1.end(), v2.begin(), v2.end(), v.begin());
+
+  cout << "O vetor aplicando merge: \n";
+  cout << v << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_sort_heap()
+{
+  //Organiza o vetor em heap de forma crescente
+  vector<int> v = {8, 6, 2, 5, 1, 10};
+  make_heap(v.begin(), v.end());
+
+  cout << "vetor : \n";
+  cout << v << endl;
+
+  sort_heap(v.begin(), v.end());
+  std::cout << "Agora organizado: ";
+  std::cout << v << endl;
+}
+
+void CTesteFuncoesGenericas::Uso_de_max()
+{
+  //Retorna o valor máximo entre dois elementos, se forem iguais, retorna o primeiro
+  cout << std::max(12, 15) << "\n";
+  cout << std::max(30, 30) << "\n";
+  cout << std::max(50, 30) << "\n";
+}
+
+void CTesteFuncoesGenericas::Uso_de_minmax_element()
+{
+  //Encontra o maior e o menor elemento em um alcance, os elementos são comparados com <
+  const auto v = {3, 9, 1, 4, 2, 5, 9};
+  const auto resultado = std::minmax_element(begin(v), end(v));
+
+  std::cout << "min = " << *resultado.first << ", max = " << *resultado.second << '\n';
 }
 
 // ANY_OF: testa se qualquer elemento do vetor satisfaz as condi��es estabelecidas
